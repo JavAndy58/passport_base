@@ -5,6 +5,7 @@ import passport_base.model.Passport;
 import passport_base.repositort.PassportRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,8 +16,8 @@ public class PassportService {
         this.passportRepository = passportRepository;
     }
 
-    public void save(Passport passport) {
-        passportRepository.save(passport);
+    Passport save(Passport passport) {
+       return passportRepository.save(passport);
     }
 
     public void delete(Passport passport) {
@@ -24,6 +25,18 @@ public class PassportService {
     }
 
     public List<Passport> findAll() {
+        List<Passport> rsl = new ArrayList<>();
+        passportRepository.findAll().forEach(rsl::add);
+        return rsl;
+    }
+
+    public List<Passport> findBySeries(String series) {
+        List<Passport> rsl = new ArrayList<>();
+        passportRepository.findAll().forEach(rsl::add);
+        return rsl;
+    }
+
+    public List<Passport> findByBirthdateAndCreated(Date birthdate, Date created) {
         List<Passport> rsl = new ArrayList<>();
         passportRepository.findAll().forEach(rsl::add);
         return rsl;

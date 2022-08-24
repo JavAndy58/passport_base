@@ -7,7 +7,6 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
-@Table(name = "passports")
 public class Passport {
 
     @Id
@@ -15,8 +14,11 @@ public class Passport {
     private int id;
     private String firstName;
     private String lastName;
-    private String birthdate;
+    private Timestamp birthdate;
     private String series;
     private String number;
     private Timestamp created;
+
+    public Passport() {
+    }
 }
