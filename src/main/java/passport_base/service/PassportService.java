@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import passport_base.model.Passport;
 import passport_base.repositort.PassportRepository;
 
+import java.awt.event.TextEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,12 +17,22 @@ public class PassportService {
         this.passportRepository = passportRepository;
     }
 
-    Passport save(Passport passport) {
+    public Passport save(Passport passport) {
        return passportRepository.save(passport);
     }
 
-    public void delete(Passport passport) {
-        passportRepository.delete(passport);
+    public boolean update(int id,Passport passport) {
+        boolean exists = passportRepository.existsById(id);
+        passportRepository.deleteById(id);
+        passport.setId(id);
+        passportRepository.save(passport);
+        return exists;
+    }
+
+    public boolean deleteById(int id) {
+        boolean exists = passportRepository.existsById(id);
+        passportRepository.deleteById(id);
+        return exists;
     }
 
     public List<Passport> findAll() {
@@ -36,7 +47,7 @@ public class PassportService {
         return rsl;
     }
 
-    public List<Passport> findByBirthdateAndCreated(Date birthdate, Date created) {
+    public List<Passport> findByBirthdateAndCreated() {
         List<Passport> rsl = new ArrayList<>();
         passportRepository.findAll().forEach(rsl::add);
         return rsl;

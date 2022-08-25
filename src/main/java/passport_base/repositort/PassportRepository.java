@@ -7,6 +7,9 @@ import java.util.List;
 
 
 public interface PassportRepository extends CrudRepository<Passport, Integer> {
+    Passport save(Passport passport);
+    boolean update(int id, Passport passport);
+    boolean deleteById(int id);
     List<Passport> findBySeries(String series);
-    List<Passport> findByBirthdateAndCreated(Date birthdate, Date created);
+    List<Passport> findByBirthdateAndCreated();
 }
