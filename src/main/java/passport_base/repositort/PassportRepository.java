@@ -11,5 +11,4 @@ public interface PassportRepository extends CrudRepository<Passport, Integer> {
     boolean update(int id, Passport passport);
     boolean deleteById(int id);
     List<Passport> findBySeries(String series);
-    List<Passport> findByBirthdateAndCreated();
 }

@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import passport_base.model.Passport;
 import passport_base.service.PassportService;
-
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -43,18 +41,13 @@ public class PassportController {
     }
 
     @GetMapping("/find")
-    public List<Passport> finaAll() {
+    public List<Passport> findAll() {
         return passportService.findAll();
     }
 
     @GetMapping("/find")
     public List<Passport> getBySeries(@RequestParam String name) {
         return passportService.findBySeries(name);
-    }
-
-    @GetMapping("/unavaliabe")
-    public List<Passport> getByUnavaliabe() {
-        return passportService.findByBirthdateAndCreated();
     }
 
 }

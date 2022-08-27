@@ -46,10 +46,4 @@ public class PassportService {
         passportRepository.findAll().forEach(rsl::add);
         return rsl;
     }
-
-    public List<Passport> findByBirthdateAndCreated() {
-        List<Passport> rsl = new ArrayList<>();
-        passportRepository.findAll().forEach(rsl::add);
-        return rsl;
-    }
 }
